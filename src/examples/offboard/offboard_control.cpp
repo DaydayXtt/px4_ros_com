@@ -58,9 +58,9 @@ public:
 	OffboardControl() : Node("offboard_control")
 	{
 
-		offboard_control_mode_publisher_ = this->create_publisher<OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
-		trajectory_setpoint_publisher_ = this->create_publisher<TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
-		vehicle_command_publisher_ = this->create_publisher<VehicleCommand>("/fmu/in/vehicle_command", 10);
+		offboard_control_mode_publisher_ = this->create_publisher<OffboardControlMode>("/px4_3/fmu/in/offboard_control_mode", 10);
+		trajectory_setpoint_publisher_ = this->create_publisher<TrajectorySetpoint>("/px4_3/fmu/in/trajectory_setpoint", 10);
+		vehicle_command_publisher_ = this->create_publisher<VehicleCommand>("/px4_3/fmu/in/vehicle_command", 10);
 
 		offboard_setpoint_counter_ = 0;
 
@@ -167,7 +167,7 @@ void OffboardControl::publish_vehicle_command(uint16_t command, float param1, fl
 	msg.param1 = param1;
 	msg.param2 = param2;
 	msg.command = command;
-	msg.target_system = 1;
+	msg.target_system = 4;
 	msg.target_component = 1;
 	msg.source_system = 1;
 	msg.source_component = 1;
